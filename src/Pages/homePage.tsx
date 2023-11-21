@@ -101,7 +101,6 @@ const HomePage = () => {
               <img src="https://i.imgur.com/MYPO5yV.png" alt="" />
               <img src="https://i.imgur.com/y6IYOHZ.png" alt="" />
               <img src="https://i.imgur.com/MYPO5yV.png" alt="" />
-              <img src="https://i.imgur.com/tf5VSYo.png" alt="" />
             </div>
           )}
         </>
