@@ -66,7 +66,11 @@ const SpeechToText = ({ sendDataToParent }: any) => {
   };
 
   if (!browserSupportsSpeechRecognition) {
-    return <div>Speech recognition is not supported in your browser.</div>;
+    return (
+      <div>
+        <div className="animate-spin rounded-full h-4 w-4 border-t-2 border-b-2 border-gray-900 mx-2" />
+      </div>
+    );
   }
 
   return (
