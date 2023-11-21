@@ -2,7 +2,6 @@ import { Image } from "@yext/pages/components";
 import { CardProps } from "@yext/search-ui-react";
 import * as React from "react";
 import Product from "../../types/products";
-import NicotineLevel from "./nicotineLevel";
 import { useEffect, useState } from "react";
 import { StarIcon } from "@heroicons/react/20/solid";
 
@@ -41,7 +40,9 @@ const ProductCard = (props: CardProps<Product>) => {
         </div>
         <div className="flex flex-col justify-between gap-4">
           <div className="flex flex-col">
-            <div className="font-medium h-8 text-[#014c6b] text-sm">{name}</div>
+            <div className="font-medium h-12 text-[#014c6b] text-sm">
+              {name}
+            </div>
           </div>
           <div className=" flex gap-2 items-center text-xs">
             <div className="flex">
@@ -65,15 +66,23 @@ const ProductCard = (props: CardProps<Product>) => {
           <div className="text-[#014c6b] font-medium text-lg">
             £{price?.value}
           </div>
-          <div className="flex flex-col gap-3  font-semibold justify-center items-center">
-            <div className="flex justify-between text-[#014c6b] rounded-full w-full border-[#014c6b] border p-1 px-2">
-              <div>-</div>
-              <div>1</div>
-              <div>+</div>
+          <div className="flex flex-col font-semibold justify-center items-center gap-4">
+            <div className="flex justify-between w-full gap-4">
+              <div className="w-full items-center flex justify-between text-[#014c6b] rounded-full   border-[#014c6b] border p-3 px-2">
+                <div className="hover:cursor-pointer">-</div>
+                <div>1</div>
+                <div className="hover:cursor-pointer">+</div>
+              </div>
             </div>
             <div className="w-full  items-center p-4 rounded-full text-white bg-[#014c6b] border flex justify-center text-center mx-auto uppercase font-semibold text-xs">
-              Add to basket
+              Add to cart
             </div>
+            <a
+              href={landingPageUrl}
+              className="w-full  items-center p-4 rounded-full text-white bg-[#014c6b] border flex justify-center text-center mx-auto uppercase font-semibold text-xs"
+            >
+              View Product
+            </a>
           </div>
         </div>
       </div>

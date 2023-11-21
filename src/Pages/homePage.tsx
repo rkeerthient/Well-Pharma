@@ -10,12 +10,13 @@ import ProductCard from "../components/Cards/ProductCard";
 import Loader from "../components/Loader";
 import BlogCard from "../components/Cards/ServiceCard";
 import { useEffect } from "react";
+import ServiceCard from "../components/Cards/ServiceCard";
+import PromoCard from "../components/Cards/PromoCard";
 
 const HomePage = () => {
   const searchActions = useSearchActions();
   const loading = useSearchState((state) => state.searchStatus.isLoading);
   const results = useSearchState((state) => state.universal.verticals) || [];
-  console.log(results);
 
   useEffect(() => {
     const urlSearchParams = new URLSearchParams(window.location.search);
@@ -41,11 +42,13 @@ const HomePage = () => {
   };
 
   const FlexSection = ({ results, CardComponent, header }: any) => {
+    console.log("entered");
+
     if (!CardComponent) {
       return <div>Missing Card Component</div>;
     }
     return (
-      <div className="hidden">
+      <div>
         <div>{header}</div>
         <div className="flex flex-col gap-4">
           {results.map((r: any, index: number) => (
@@ -83,11 +86,15 @@ const HomePage = () => {
                     label: "Products",
                     viewAllButton: true,
                   },
-
-                  services: {
-                    CardComponent: BlogCard,
+                  service: {
+                    CardComponent: ServiceCard,
                     SectionComponent: FlexSection,
-                    label: "Blogs",
+                    label: "Services",
+                    viewAllButton: true,
+                  },
+                  promotion: {
+                    CardComponent: PromoCard,
+                    label: "",
                     viewAllButton: true,
                   },
                 }}

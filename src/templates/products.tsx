@@ -57,7 +57,7 @@ const Static: Template<TemplateRenderProps> = ({
   return (
     <>
       <PageLayout _site={_site}>
-        <div className="max-w-screen-2xl  mx-auto">
+        <div className="centered-container">
           <ProductsGrid></ProductsGrid>
         </div>
       </PageLayout>

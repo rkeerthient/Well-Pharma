@@ -101,9 +101,7 @@ const Header = () => {
         searchActions.setUniversalLimit({
           faqs: 5,
           products: 12,
-          locations: 5,
-          blogs: 5,
-          blog_details: 4,
+          service: 5,
         }),
         searchActions.executeUniversalQuery());
   };

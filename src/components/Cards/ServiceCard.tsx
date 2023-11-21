@@ -4,6 +4,9 @@ import Ce_service from "../../types/service";
 import RTF from "../RTF";
 
 const ServiceCard = (props: CardProps<Ce_service>): JSX.Element => {
+  console.log("de");
+  console.log(JSON.stringify(props));
+
   const { result } = props;
   const { name } = result;
   const { landingPageUrl, richTextDescription, c_primaryCTA, c_secondaryCTA } =
