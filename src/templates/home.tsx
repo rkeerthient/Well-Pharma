@@ -27,7 +27,7 @@ export const getHeadConfig: GetHeadConfig<TemplateRenderProps> = ({
   document,
 }): HeadConfig => {
   return {
-    title: "VUSE | Home",
+    title: "Well | Home",
     charset: "UTF-8",
     viewport: "width=device-width, initial-scale=1",
     tags: [
