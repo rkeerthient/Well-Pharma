@@ -34,7 +34,7 @@ const ProductCard = (props: CardProps<Product>) => {
             ></Image>
           )}
         </div>
-        <div className="flex flex-col justify-between gap-6">
+        <div className="flex flex-col justify-between gap-4">
           <div className="flex flex-col">
             <div className="font-medium h-8 text-[#014c6b] text-sm">{name}</div>
           </div>
@@ -56,6 +56,9 @@ const ProductCard = (props: CardProps<Product>) => {
             <div className="text-[#014c6b] text-base">
               {randRating} Review(s)
             </div>
+          </div>
+          <div className="text-[#014c6b] font-medium text-lg">
+            £{price?.value}
           </div>
           <div className="flex flex-col gap-3  font-semibold justify-center items-center">
             <div className="flex justify-between text-[#014c6b] rounded-full w-full border-[#014c6b] border p-1 px-2">

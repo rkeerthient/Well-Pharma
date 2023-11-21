@@ -12,6 +12,7 @@ import { useEffect } from "react";
 
 import ProductCard from "../components/Cards/ProductCard";
 import Loader from "../components/Loader";
+import SortDropdown from "../components/SortDropdown";
 
 const ProductsGrid = () => {
   const searchActions = useSearchActions();
@@ -36,8 +37,10 @@ const ProductsGrid = () => {
               <StandardFacets />
             </div>
             <div className="w-full">
-              <div className="flex flex-col items-baseline">
-                <ResultsCount />
+              <div className="flex  items-baseline justify-between">
+                <ResultsCount /> <SortDropdown />
+              </div>
+              <div className="flex justify-between mb-4">
                 <AppliedFilters />
               </div>
               <div className="flex flex-col space-y-4">
