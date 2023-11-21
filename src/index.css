@@ -94,3 +94,10 @@
 .slick-slider .slick-slide {
   padding: 0 15px;
 }
+.searchBar > div {
+  @apply !bg-transparent;
+}
+
+.searchBar {
+  @apply !mb-0;
+}

@@ -1,3 +1,5 @@
+// src/components/SortDropdown.tsx
+
 import {
   Direction,
   SortBy,
@@ -9,7 +11,6 @@ import * as React from "react";
 import { useState } from "react";
 import { BiChevronDown, BiChevronUp } from "react-icons/bi";
 
-// object that has a label for the different sort types
 const sortByOptions: { label: string; sortBy: SortBy }[] = [
   {
     label: "Name: A-Z",
@@ -30,28 +31,25 @@ const sortByOptions: { label: string; sortBy: SortBy }[] = [
   {
     label: "Price: High-Low",
     sortBy: {
-      field: "name",
-      direction: Direction.Ascending,
+      field: "price.value",
+      direction: Direction.Descending,
       type: SortType.Field,
     },
   },
   {
     label: "Price: Low-High",
     sortBy: {
-      field: "name",
-      direction: Direction.Descending,
+      field: "price.value",
+      direction: Direction.Ascending,
       type: SortType.Field,
     },
   },
 ];
 
 const SortDropdown = (): JSX.Element | null => {
-  // used to manage dropdown open/close state
   const [open, setOpen] = useState(false);
 
-  // sortBys contains all the sortBy options that are in the search state
   const sortBys = useSearchState((state) => state.vertical.sortBys);
-  // checking both result counts as <VerticalResults /> will show allResultsForVertical if there are no results for query
   const resultsCount =
     useSearchState(
       (state) =>
@@ -61,14 +59,12 @@ const SortDropdown = (): JSX.Element | null => {
 
   const searchActions = useSearchActions();
 
-  // selectedSort is the currently selected sortBy option
   const selectedSort = sortByOptions.find(
     (s) =>
       s.sortBy.field === sortBys?.[0]?.field &&
       s.sortBy.direction === sortBys?.[0]?.direction
   );
 
-  // this function will set the sortBys in the search state, execute the search, and close the drawer
   const handleTileClick = (sortBy: SortBy) => {
     searchActions.setSortBys([sortBy]);
     searchActions.executeVerticalQuery();
@@ -89,10 +85,8 @@ const SortDropdown = (): JSX.Element | null => {
       <ul className="absolute border">
         {open &&
           sortByOptions
-            // filtering out the selected sort option from the dropdown
             .filter((s) => s.sortBy !== selectedSort?.sortBy)
             .map((s) => (
-              // when a sort option is clicked, call handleTileClick
               <li onClick={() => handleTileClick(s.sortBy)}>
                 <div className="flex h-10 w-48 items-center px-2 bg-white hover:bg-gray-300">
                   {s.label}

@@ -104,7 +104,8 @@ const Header = () => {
           locations: 5,
           blogs: 5,
           blog_details: 4,
-        }));
+        }),
+        searchActions.executeUniversalQuery());
   };
 
   const entityPreviewSearcher = provideHeadless({
@@ -144,14 +145,14 @@ const Header = () => {
               ariaLabel={dropdownItemProps.ariaLabel}
             >
               <a href={result.slug} className="flex flex-col gap-2 ">
-                {result.photoGallery && result.primaryPhoto && (
+                {result.primaryPhoto && (
                   <Image
                     image={result.primaryPhoto}
-                    className="h-full w-32 mx-auto"
+                    className="h-full !w-16 mx-auto"
                   />
                 )}
-                <div className="flex gap-2 px-1">
-                  <div className="text-sm">{result.name}</div>
+                <div className="flex flex-col gap-2 px-1">
+                  <div className="text-xs">{result.name}</div>
                   <div className="text-sm">£{result.price?.value}</div>
                 </div>
               </a>
@@ -175,8 +176,8 @@ const Header = () => {
               {linkDoms}
             </div>
 
-            <div className="flex-1">
-              <div className="w-full flex   gap-2 items-center pr-3">
+            <div className="flex-1 border border-black rounded-full">
+              <div className="w-full flex gap-2 items-center pr-3">
                 {!state || state === "products" ? (
                   <SearchBar
                     hideRecentSearches={true}
@@ -200,6 +201,7 @@ const Header = () => {
                       searchButton: "text-black searchBar",
                     }}
                     hideRecentSearches={true}
+                    onSearch={handleSearch}
                   />
                 )}
                 <div className="w-fit text-black">

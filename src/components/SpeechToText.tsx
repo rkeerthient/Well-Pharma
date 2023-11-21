@@ -54,11 +54,11 @@ const SpeechToText = ({ sendDataToParent }: any) => {
 
   const handleStart = () => {
     resetTranscript();
-    setIsProcessing(true); // Start showing the loading spinner
+    setIsProcessing(true);
     setTimeout(() => {
-      setIsProcessing(false); // Stop showing the loading spinner after a brief delay
-      setIsListening(true); // Start speech recognition
-    }, 500); // Adjust the delay as needed
+      setIsProcessing(false);
+      setIsListening(true);
+    }, 500);
   };
 
   const handleStop = () => {
@@ -73,15 +73,17 @@ const SpeechToText = ({ sendDataToParent }: any) => {
     <>
       {isListening ? (
         <>
-          <button onClick={handleStop} disabled={!isListening}>
-            <StopIcon className="h-5 w-5" />
-          </button>
+          <div className="flex gap-2">
+            <button onClick={handleStop} disabled={!isListening}>
+              <StopIcon className="h-5 w-5" />
+            </button>
 
-          {isProcessing ? (
-            <div>
-              <div className="animate-spin rounded-full h-4 w-4 border-t-2 border-b-2 border-gray-900 mx-2" />
-            </div>
-          ) : null}
+            {isProcessing ? (
+              <div>
+                <div className="animate-spin rounded-full h-4 w-4 border-t-2 border-b-2 border-gray-900 mx-2" />
+              </div>
+            ) : null}
+          </div>
         </>
       ) : (
         <button

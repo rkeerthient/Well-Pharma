@@ -16,7 +16,6 @@ const ProductCard = (props: CardProps<Product>) => {
     return classes.filter(Boolean).join(" ");
   }
   function randomIntFromInterval(min: number, max: number) {
-    // min and max included
     setRandRating(Math.floor(Math.random() * (max - min + 1) + min));
   }
 
@@ -27,11 +26,17 @@ const ProductCard = (props: CardProps<Product>) => {
     <div className="  bg-white p-4 flex flex-col gap-y-8 h-full">
       <div className="flex flex-col justify-between  gap-y-6">
         <div>
-          {primaryPhoto && (
+          {primaryPhoto ? (
             <Image
               image={primaryPhoto}
               className="!h-[283px] !w-[233px] mx-auto"
             ></Image>
+          ) : (
+            <img
+              src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Femfprotectionaustralia.com.au%2Fwp-content%2Fuploads%2F2015%2F07%2Fplaceholder-product.jpg&f=1&nofb=1&ipt=a9e4d6696ca75f1a86e4956ffe79955d42cd8e7777f0d0d7953c31031fc266b2&ipo=images"
+              className="!h-[283px] !w-[233px] mx-auto"
+              alt=""
+            />
           )}
         </div>
         <div className="flex flex-col justify-between gap-4">
