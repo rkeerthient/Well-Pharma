@@ -142,11 +142,17 @@ const Header = () => {
               value={result.name}
               ariaLabel={dropdownItemProps.ariaLabel}
             >
-              <a href={result.slug} className="flex flex-col gap-2 ">
-                {result.primaryPhoto && (
+              <a href={result.slug} className="flex flex-col gap-2 w-full">
+                {result.primaryPhoto ? (
                   <Image
                     image={result.primaryPhoto}
-                    className="h-full !w-16 mx-auto"
+                    className="h-full !w-full p-6 mx-auto"
+                  />
+                ) : (
+                  <img
+                    src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Femfprotectionaustralia.com.au%2Fwp-content%2Fuploads%2F2015%2F07%2Fplaceholder-product.jpg&f=1&nofb=1&ipt=a9e4d6696ca75f1a86e4956ffe79955d42cd8e7777f0d0d7953c31031fc266b2&ipo=images"
+                    className="h-full !w-full p-6 mx-auto"
+                    alt=""
                   />
                 )}
                 <div className="flex flex-col gap-2 px-1">
