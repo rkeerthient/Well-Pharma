@@ -79,7 +79,7 @@ const ProductsGrid = () => {
                 <VerticalResults
                   CardComponent={ProductCard}
                   customCssClasses={{
-                    verticalResultsContainer: `grid grid-cols-4 gap-2`,
+                    verticalResultsContainer: `grid grid-cols-3 gap-2`,
                   }}
                 />
                 <div>

@@ -347,6 +347,11 @@ export interface UnitPricingMeasure {
 	value: number,
 }
 
+export interface C_newPrice {
+	value?: number,
+	currencyCode: CurrencyCode,
+}
+
 export enum LinkType {
 	OTHER = "Other",
 	URL = "URL",
@@ -421,10 +426,13 @@ export default interface Product {
 	name: string,
 	c_brand?: string[],
 	c_category?: string[],
+	c_discount?: number,
 	c_format?: string[],
 	c_freeForm?: string[],
 	c_keyFeatures?: string[],
+	c_newPrice?: C_newPrice,
 	c_other?: string[],
+	c_priceRange?: string,
 	c_primaryCTA?: C_primaryCTA,
 	c_secondaryCTA?: C_secondaryCTA,
 	c_type?: string[],

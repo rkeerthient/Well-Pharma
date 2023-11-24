@@ -8,7 +8,16 @@ import { StarIcon } from "@heroicons/react/20/solid";
 const ProductCard = (props: CardProps<Product>) => {
   const { result } = props;
   const { name } = result;
-  const { slug, primaryPhoto, price, bundle, landingPageUrl } = result.rawData;
+  const {
+    slug,
+    primaryPhoto,
+    price,
+    bundle,
+    landingPageUrl,
+    c_discount,
+    c_newPrice,
+    c_type,
+  } = result.rawData;
   const [subscr, setSubr] = useState(0);
   const [randRating, setRandRating] = useState(0);
   function classNames(...classes: any) {
@@ -22,18 +31,46 @@ const ProductCard = (props: CardProps<Product>) => {
     randomIntFromInterval(1, 5);
   }, []);
   return (
-    <div className="  bg-white p-4 flex flex-col gap-y-8 h-full">
-      <div className="flex flex-col justify-between  gap-y-6">
-        <div>
+    <div className=" border  bg-white p-4 flex flex-col  h-full">
+      <div className="flex flex-col gap-y-2 ">
+        <div
+          className={`flex gap-3 ${
+            c_type || c_discount ? `visible` : `invisible`
+          }`}
+        >
+          {!(c_type || c_discount) && (
+            <div>
+              <img
+                src="https://well.co.uk/content/stencil_theme_images/productlabel/notice_pmed.svg"
+                className="w-1/2 h-auto"
+                alt=""
+              />
+            </div>
+          )}
+          {c_type && (
+            <img
+              src="https://well.co.uk/content/stencil_theme_images/productlabel/notice_pmed.svg"
+              className="w-1/2 h-auto"
+              alt=""
+            />
+          )}
+          {c_discount && (
+            <p className="border text-sm w-fit bg-yellow-400 px-3 py-1 font-medium rounded-full">
+              Sale - {c_discount}%
+            </p>
+          )}
+        </div>
+
+        <div className="h-[250px] w-[250px]">
           {primaryPhoto ? (
             <Image
               image={primaryPhoto}
-              className="!h-[283px] !w-[233px] mx-auto"
+              className="!h-full max-w-full mx-auto p-4"
             ></Image>
           ) : (
             <img
               src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Femfprotectionaustralia.com.au%2Fwp-content%2Fuploads%2F2015%2F07%2Fplaceholder-product.jpg&f=1&nofb=1&ipt=a9e4d6696ca75f1a86e4956ffe79955d42cd8e7777f0d0d7953c31031fc266b2&ipo=images"
-              className="!h-[283px] !w-[233px] mx-auto"
+              className="!h-full max-w-full mx-auto p-4"
               alt=""
             />
           )}
@@ -64,19 +101,25 @@ const ProductCard = (props: CardProps<Product>) => {
             </div>
           </div>
           <div className="text-[#014c6b] font-medium text-lg">
-            £{price?.value}
+            <span
+              className={`${c_discount && `text-[#d1dfe4] line-through mr-4`}`}
+            >
+              £{price?.value}
+            </span>
+            {c_discount && `£${c_newPrice?.value}`}
           </div>
           <div className="flex flex-col font-semibold justify-center items-center gap-4">
             <div className="flex justify-between w-full gap-4">
-              <div className="w-full items-center flex justify-between text-[#014c6b] rounded-full   border-[#014c6b] border p-3 px-2">
+              <div className=" w-1/2 items-center flex justify-between text-[#014c6b] rounded-full   border-[#014c6b] border p-3 px-2">
                 <div className="hover:cursor-pointer">-</div>
                 <div>1</div>
                 <div className="hover:cursor-pointer">+</div>
               </div>
+              <div className="  w-1/2 items-center p-4 rounded-full text-white bg-[#014c6b] border flex justify-center text-center mx-auto uppercase font-semibold text-xs">
+                Add to cart
+              </div>
             </div>
-            <div className="w-full  items-center p-4 rounded-full text-white bg-[#014c6b] border flex justify-center text-center mx-auto uppercase font-semibold text-xs">
-              Add to cart
-            </div>
+
             <a
               href={landingPageUrl}
               className="w-full  items-center p-4 rounded-full text-white bg-[#014c6b] border flex justify-center text-center mx-auto uppercase font-semibold text-xs"
