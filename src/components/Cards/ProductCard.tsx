@@ -9,16 +9,14 @@ const ProductCard = (props: CardProps<Product>) => {
   const { result } = props;
   const { name } = result;
   const {
-    slug,
     primaryPhoto,
     price,
-    bundle,
     landingPageUrl,
     c_discount,
     c_newPrice,
     c_type,
+    c_oldPrice,
   } = result.rawData;
-  const [subscr, setSubr] = useState(0);
   const [randRating, setRandRating] = useState(0);
   function classNames(...classes: any) {
     return classes.filter(Boolean).join(" ");
@@ -104,9 +102,9 @@ const ProductCard = (props: CardProps<Product>) => {
             <span
               className={`${c_discount && `text-[#d1dfe4] line-through mr-4`}`}
             >
-              £{price?.value}
+              £{c_oldPrice?.value}
             </span>
-            {c_discount && `£${c_newPrice?.value}`}
+            £{price?.value}
           </div>
           <div className="flex flex-col font-semibold justify-center items-center gap-4">
             <div className="flex justify-between w-full gap-4">

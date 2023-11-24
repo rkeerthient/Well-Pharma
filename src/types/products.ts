@@ -352,6 +352,11 @@ export interface C_newPrice {
 	currencyCode: CurrencyCode,
 }
 
+export interface C_oldPrice {
+	value?: number,
+	currencyCode: CurrencyCode,
+}
+
 export enum LinkType {
 	OTHER = "Other",
 	URL = "URL",
@@ -431,6 +436,7 @@ export default interface Product {
 	c_freeForm?: string[],
 	c_keyFeatures?: string[],
 	c_newPrice?: C_newPrice,
+	c_oldPrice?: C_oldPrice,
 	c_other?: string[],
 	c_priceRange?: string,
 	c_primaryCTA?: C_primaryCTA,
