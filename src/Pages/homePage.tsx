@@ -42,8 +42,6 @@ const HomePage = () => {
   };
 
   const FlexSection = ({ results, CardComponent, header }: any) => {
-    console.log("entered");
-
     if (!CardComponent) {
       return <div>Missing Card Component</div>;
     }
@@ -95,7 +93,6 @@ const HomePage = () => {
                   promotion: {
                     CardComponent: PromoCard,
                     label: "",
-                    viewAllButton: true,
                   },
                 }}
               />
