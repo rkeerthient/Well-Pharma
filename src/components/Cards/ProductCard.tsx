@@ -99,11 +99,11 @@ const ProductCard = (props: CardProps<Product>) => {
             </div>
           </div>
           <div className="text-[#014c6b] font-medium text-lg">
-            <span
-              className={`${c_discount && `text-[#d1dfe4] line-through mr-4`}`}
-            >
-              £{c_oldPrice?.value}
-            </span>
+            {c_discount && (
+              <span className={` text-[#d1dfe4] line-through mr-4 `}>
+                £{c_oldPrice?.value}
+              </span>
+            )}
             £{price?.value}
           </div>
           <div className="flex flex-col font-semibold justify-center items-center gap-4">
