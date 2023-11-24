@@ -55,7 +55,7 @@ const ProductCard = (props: CardProps<Product>) => {
             />
           )}
           {c_discount && (
-            <p className="border text-sm w-fit bg-yellow-400 px-3 py-1 font-medium rounded-full">
+            <p className="flex items-center border text-sm w-fit bg-yellow-400 px-3 py-1 font-medium rounded-full">
               Sale - {c_discount}%
             </p>
           )}
